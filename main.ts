@@ -1,60 +1,35 @@
-import { App, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Plugin, PluginSettingTab, Setting, CachedMetadata } from 'obsidian';
 
-interface MyPluginSettings {
-	mySetting: string;
+interface PluginSettings {
+	fronmatterAttribute: string;
+	valueToHighlight: string,
 }
 
-const DEFAULT_SETTINGS: MyPluginSettings = {
-	mySetting: 'default'
+const DEFAULT_SETTINGS: PluginSettings = {
+	fronmatterAttribute: 'classification',
+	valueToHighlight: 'public'
 }
 
 export default class MyPlugin extends Plugin {
-	settings: MyPluginSettings;
+	settings: PluginSettings;
 
 	async onload() {
-		console.log('loading plugin');
-
 		await this.loadSettings();
-
-		this.addRibbonIcon('dice', 'Sample Plugin', () => {
-			new Notice('This is a notice!');
-		});
-
-		this.addStatusBarItem().setText('Status Bar Text');
-
-		this.addCommand({
-			id: 'open-sample-modal',
-			name: 'Open Sample Modal',
-			// callback: () => {
-			// 	console.log('Simple Callback');
-			// },
-			checkCallback: (checking: boolean) => {
-				let leaf = this.app.workspace.activeLeaf;
-				if (leaf) {
-					if (!checking) {
-						new SampleModal(this.app).open();
-					}
-					return true;
-				}
-				return false;
-			}
-		});
-
-		this.addSettingTab(new SampleSettingTab(this.app, this));
-
-		this.registerCodeMirror((cm: CodeMirror.Editor) => {
-			console.log('codemirror', cm);
-		});
-
-		this.registerDomEvent(document, 'click', (evt: MouseEvent) => {
-			console.log('click', evt);
-		});
-
-		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
+		const { workspace } = this.app
+		this.registerEvent(workspace.on('file-open', this.onFileOpen, this))
+		this.addSettingTab(new SettingTab(this.app, this));
 	}
 
-	onunload() {
-		console.log('unloading plugin');
+	async onFileOpen(file: any) {
+		if (!file || file.extension !== 'md')
+      		return;
+		const classifcation = await this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.fronmatterAttribute]
+		const titlebar = document.getElementsByClassName("titlebar")[0]
+		if (classifcation == this.settings.valueToHighlight) {
+  			titlebar.classList.add("myalert");
+		} else {
+			titlebar.classList.remove("myalert")
+		}
 	}
 
 	async loadSettings() {
@@ -66,23 +41,7 @@ export default class MyPlugin extends Plugin {
 	}
 }
 
-class SampleModal extends Modal {
-	constructor(app: App) {
-		super(app);
-	}
-
-	onOpen() {
-		let {contentEl} = this;
-		contentEl.setText('Woah!');
-	}
-
-	onClose() {
-		let {contentEl} = this;
-		contentEl.empty();
-	}
-}
-
-class SampleSettingTab extends PluginSettingTab {
+class SettingTab extends PluginSettingTab {
 	plugin: MyPlugin;
 
 	constructor(app: App, plugin: MyPlugin) {
@@ -93,20 +52,28 @@ class SampleSettingTab extends PluginSettingTab {
 	display(): void {
 		let {containerEl} = this;
 
-		containerEl.empty();
-
-		containerEl.createEl('h2', {text: 'Settings for my awesome plugin.'});
+		containerEl.empty()
 
 		new Setting(containerEl)
-			.setName('Setting #1')
-			.setDesc('It\'s a secret')
+			.setName('Attribute')
+			.setDesc('the attribute in the frontmatter that indicates the visiblity')
 			.addText(text => text
-				.setPlaceholder('Enter your secret')
-				.setValue('')
+				.setPlaceholder('classification')
+				.setValue(this.plugin.settings.fronmatterAttribute)
 				.onChange(async (value) => {
-					console.log('Secret: ' + value);
-					this.plugin.settings.mySetting = value;
-					await this.plugin.saveSettings();
-				}));
+					console.log('Secret: ' + value)
+					this.plugin.settings.fronmatterAttribute = value
+					await this.plugin.saveSettings()
+				}))
+		new Setting(containerEl)
+			.setName('Value')
+			.setDesc('the value that indicates public visibility')
+			.addText(text => text
+				.setPlaceholder('public')
+				.setValue(this.plugin.settings.valueToHighlight)
+				.onChange(async (value) => {
+					this.plugin.settings.valueToHighlight = value
+					await this.plugin.saveSettings()
+				}))
 	}
 }
