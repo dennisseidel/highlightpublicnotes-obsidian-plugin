@@ -13,7 +13,7 @@ In the settings of the plugin you can update the `attribute` the plugin  checks 
 
 ## Compatibility
 
-`obsidian-calendar-plugin` currently requires Obsidian v0.9.11 or above to work properly.
+`obsidian-highlightpublicnotes-plugin` currently requires Obsidian v0.9.12 or above to work properly.
 
 ## Installation
 

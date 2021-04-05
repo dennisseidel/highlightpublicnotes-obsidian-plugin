@@ -10,7 +10,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
 	valueToHighlight: 'public'
 }
 
-export default class MyPlugin extends Plugin {
+export default class HighlightpublicnotesPlugin extends Plugin {
 	settings: PluginSettings;
 
 	async onload() {
@@ -42,9 +42,9 @@ export default class MyPlugin extends Plugin {
 }
 
 class SettingTab extends PluginSettingTab {
-	plugin: MyPlugin;
+	plugin: HighlightpublicnotesPlugin;
 
-	constructor(app: App, plugin: MyPlugin) {
+	constructor(app: App, plugin: HighlightpublicnotesPlugin) {
 		super(app, plugin);
 		this.plugin = plugin;
 	}
@@ -61,7 +61,6 @@ class SettingTab extends PluginSettingTab {
 				.setPlaceholder('classification')
 				.setValue(this.plugin.settings.fronmatterAttribute)
 				.onChange(async (value) => {
-					console.log('Secret: ' + value)
 					this.plugin.settings.fronmatterAttribute = value
 					await this.plugin.saveSettings()
 				}))
