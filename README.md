@@ -10,7 +10,7 @@ After enabling the plugin in the settings menu, all notes with a frontmatter wit
 In the settings of the plugin you can update the `attribute` the plugin  checks as well as the `value`. 
 
 ## Alternative: cssclasses 
-Obsidian has a [cssclasses](https://forum.obsidian.md/t/apply-custom-css-to-certain-pages/15361) build-in. Combining a custome css snippet with the `cssclasses` attribute in the frontmatter provides a similar functionality. 
+Obsidian has a [cssclasses](https://forum.obsidian.md/t/apply-custom-css-to-certain-pages/15361) build-in. Combining a custome css snippet with the `cssclass:` attribute in the frontmatter provides a similar functionality. 
 
 ## Compatibility
 
