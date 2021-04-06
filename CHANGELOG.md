@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/v1.3.0...v1.3.1) (2021-04-06)
+
 ## 1.3.0 (2021-04-05)
 
 
@@ -20,4 +22,3 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * initial version ([c065982](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/c065982af200b2ed0278daf9710938ac812d47b7))
-
