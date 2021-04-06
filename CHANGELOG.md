@@ -20,3 +20,4 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * initial version ([c065982](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/c065982af200b2ed0278daf9710938ac812d47b7))
+
