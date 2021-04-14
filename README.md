@@ -19,3 +19,7 @@ Obsidian has a [cssclasses](https://forum.obsidian.md/t/apply-custom-css-to-cert
 ## Installation
 
 You can install the plugin via the Community Plugins tab within Obsidian. Just search for "highlight public notes".
+
+## Changes 
+
+You find the full changelog [here](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/blob/master/CHANGELOG.md). 
