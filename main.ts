@@ -23,7 +23,7 @@ export default class HighlightpublicnotesPlugin extends Plugin {
 	async onFileOpen(file: any) {
 		if (!file || file.extension !== 'md')
       		return;
-		const classifcation = await this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.fronmatterAttribute]
+		const classifcation = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.fronmatterAttribute]
 		const titlebar = document.getElementsByClassName("titlebar")[0]
 		if (classifcation == this.settings.valueToHighlight) {
   			titlebar.classList.add("myalert");
