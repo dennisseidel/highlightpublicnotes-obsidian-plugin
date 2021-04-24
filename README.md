@@ -1,8 +1,9 @@
 #  highlight public notes
 
-This plugin for [Obsidian](https://obsidian.md/) highlights the titlebar of notes that you classify as public in the frontmatter. This prevents you from writing confidential data into notes you later publish e.g. through a script. 
+This plugin for [Obsidian](https://obsidian.md/) highlights the titlebar of notes that you **classify as public in the frontmatter** or that is **contained in a specific folder**. This prevents you from writing confidential data into notes you later publish e.g. through a script. 
 
-![screenshot-full](images/example-highlightpublicnotes.png)
+
+![screenshot-full](https://raw.githubusercontent.com/dennisseidel/highlightpublicnotes-obsidian-plugin/master/images/example-highlightpublicnotes.png)
 
 ## Usage
 After enabling the plugin in the settings menu, all notes with a frontmatter with an attribute `classification: public` highlight the titlebar red.
