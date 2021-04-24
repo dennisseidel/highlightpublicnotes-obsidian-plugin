@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.3.2...1.4.0) (2021-04-24)
+
+
+### Features
+
+* highlight path ([8dbd0fb](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/8dbd0fbc8703b878f01b6d499cbfc78119d1f5d7))
+
+
+### Bug Fixes
+
+* remove unnecessary await ([6c91e7d](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/6c91e7d994674eed499f89240f61058ff8059ac0))
+
 ### [1.3.2](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/v1.3.1...v1.3.2) (2021-04-14)
 
 
