@@ -160,7 +160,7 @@ class SettingTab extends PluginSettingTab {
 				.onChange(async (value) => {
 					this.plugin.settings.valueToHighlight = value
 					await this.plugin.saveSettings()
-				}))
-		}
-	}
+                })
+            )
+       }
 }
