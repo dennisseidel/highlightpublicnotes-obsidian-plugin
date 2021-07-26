@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.4](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.4.3...1.4.4) (2021-07-26)
+
+
+### Bug Fixes
+
+* spell frontmatterAttribute correct ([aee9edc](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/aee9edc0d592b02d9590acef3cb8c3558fe529da))
+
 ### [1.4.3](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.4.2...1.4.3) (2021-04-24)
 
 ### [1.4.2](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.4.1...1.4.2) (2021-04-24)
