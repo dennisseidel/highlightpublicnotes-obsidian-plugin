@@ -3,7 +3,7 @@ import { App, Plugin, PluginSettingTab, Setting, CachedMetadata, TFile } from 'o
 interface PluginSettings {
 	useFrontmatterHighlight: boolean,
 	usePathHighlight: boolean,
-	fronmatterAttribute: string,
+	frontmatterAttribute: string,
 	valueToHighlight: string,
 	pathToHighlight: string,
 }
@@ -11,7 +11,7 @@ interface PluginSettings {
 const DEFAULT_SETTINGS: PluginSettings = {
 	useFrontmatterHighlight: true,
 	usePathHighlight: false,
-	fronmatterAttribute: 'classification',
+	frontmatterAttribute: 'classification',
 	valueToHighlight: 'public',
 	pathToHighlight: '',
 }
@@ -31,7 +31,7 @@ export default class HighlightpublicnotesPlugin extends Plugin {
       		return;
 
 		if(this.settings.useFrontmatterHighlight) {
-			const classifcation = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.fronmatterAttribute]
+			const classifcation = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.frontmatterAttribute]
 			if (classifcation == this.settings.valueToHighlight) {
 				this.highlightNote()
 			} else {
@@ -145,9 +145,9 @@ class SettingTab extends PluginSettingTab {
 			.setDesc('the attribute in the frontmatter that indicates the visiblity')
 			.addText(text => text
 				.setPlaceholder('classification')
-				.setValue(this.plugin.settings.fronmatterAttribute)
+				.setValue(this.plugin.settings.frontmatterAttribute)
 				.onChange(async (value) => {
-					this.plugin.settings.fronmatterAttribute = value
+					this.plugin.settings.frontmatterAttribute = value
 					await this.plugin.saveSettings()
 				}))
 			
