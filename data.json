@@ -1,1 +1,8 @@
-{"useFrontmatterHighlight":false,"usePathHighlight":true,"frontmatterAttribute":"classification","valueToHighlight":"public","pathToHighlight":"03_ARTICLES","mySetting":"classifcation"}
+{
+  "useFrontmatterHighlight": true,
+  "usePathHighlight": false,
+  "frontmatterAttribute": "classification",
+  "valueToHighlight": "public",
+  "pathToHighlight": "03_ARTICLES",
+  "mySetting": "classification"
+}

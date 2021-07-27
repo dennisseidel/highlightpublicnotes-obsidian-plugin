@@ -31,8 +31,11 @@ export default class HighlightpublicnotesPlugin extends Plugin {
       		return;
 
 		if(this.settings.useFrontmatterHighlight) {
-			const classifcation = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.frontmatterAttribute]
-			if (classifcation == this.settings.valueToHighlight) {
+			const classification = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.frontmatterAttribute]
+			const normalizedClassification = classification?.toString().toLowerCase()
+			const valueToHighlight = this.settings.valueToHighlight
+			const normalizedValueToHighlight = valueToHighlight?.toString().toLowerCase()
+			if (normalizedClassification == normalizedValueToHighlight) {
 				this.highlightNote()
 			} else {
 				this.unhighlightNote()
@@ -44,6 +47,10 @@ export default class HighlightpublicnotesPlugin extends Plugin {
                 this.unhighlightNote()
             }
         }
+	}
+
+	private getNoteClassification() {
+	
 	}
 
 	private highlightNote() {
