@@ -30,27 +30,33 @@ export default class HighlightpublicnotesPlugin extends Plugin {
 		if (!file || file.extension !== 'md')
       		return;
 
-		if(this.settings.useFrontmatterHighlight) {
-			const classification = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.frontmatterAttribute]
-			const normalizedClassification = classification?.toString().toLowerCase()
-			const valueToHighlight = this.settings.valueToHighlight
-			const normalizedValueToHighlight = valueToHighlight?.toString().toLowerCase()
-			if (normalizedClassification == normalizedValueToHighlight) {
+		// check for path highlighting first
+		if(this.settings.usePathHighlight) {
+			if (this.checkPath(file.path, this.settings.pathToHighlight)) {
 				this.highlightNote()
 			} else {
 				this.unhighlightNote()
+				// if not in higlighte path check classifiedFrontmatter
+				this.higlightClassifiedFrontmatterFile(file)
 			}
-		} else if(this.settings.usePathHighlight) {
-            if (this.checkPath(file.path, this.settings.pathToHighlight)) {
-		        this.highlightNote()
-            } else {
-                this.unhighlightNote()
-            }
-        }
+		} else if(this.settings.useFrontmatterHighlight) {
+			// if no path hilighting check for frontmatter highlighting
+			this.higlightClassifiedFrontmatterFile(file)
+		}
+
+		
 	}
 
-	private getNoteClassification() {
-	
+	private higlightClassifiedFrontmatterFile(file: TFile) {
+		const classification = this.app.metadataCache.getFileCache(file)?.frontmatter?.[this.settings.frontmatterAttribute]
+		const normalizedClassification = classification?.toString().toLowerCase()
+		const valueToHighlight = this.settings.valueToHighlight
+		const normalizedValueToHighlight = valueToHighlight?.toString().toLowerCase()
+		if (normalizedClassification == normalizedValueToHighlight) {
+			this.highlightNote()
+		} else {
+			this.unhighlightNote()
+		}
 	}
 
 	private highlightNote() {
