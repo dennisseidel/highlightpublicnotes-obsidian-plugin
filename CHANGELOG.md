@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.4.3...1.5.0) (2021-07-27)
+
+
+### Features
+
+* support boolean values in frontmatter ([dc63e41](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/dc63e412e65731d4d1164322822e0979a29ec6ac))
+
+
+### Bug Fixes
+
+* path & frontmatter highlight work parallel ([e31673a](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/e31673a0402fdf7fda26b107f1217ae1f01e63c5))
+* spell frontmatterAttribute correct ([#3](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/issues/3)) ([de990b0](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/commit/de990b0cac4c1a974cc1fc270cc058cc2efc607d))
+
 ### [1.4.4](https://github.com/dennisseidel/highlightpublicnotes-obsidian-plugin/compare/1.4.3...1.4.4) (2021-07-26)
 
 
