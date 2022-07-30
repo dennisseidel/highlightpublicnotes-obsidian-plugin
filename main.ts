@@ -6,6 +6,7 @@ interface PluginSettings {
 	frontmatterAttribute: string,
 	valueToHighlight: string,
 	pathToHighlight: string,
+	uiElementToHighlight: string,
 }
 
 const DEFAULT_SETTINGS: PluginSettings = {
@@ -14,6 +15,7 @@ const DEFAULT_SETTINGS: PluginSettings = {
 	frontmatterAttribute: 'classification',
 	valueToHighlight: 'public',
 	pathToHighlight: '',
+	uiElementToHighlight: 'titlebar',
 }
 
 export default class HighlightpublicnotesPlugin extends Plugin {
@@ -60,13 +62,21 @@ export default class HighlightpublicnotesPlugin extends Plugin {
 	}
 
 	private highlightNote() {
-		const titlebar = document.getElementsByClassName("titlebar")[0]
-		titlebar.classList.add("myalert")
+		const titlebar = document.getElementsByClassName(this.settings.uiElementToHighlight)[0]
+		if (this.settings.uiElementToHighlight == 'titlebar') {
+			titlebar.classList.add("myalert")
+		} else {
+			titlebar.classList.add("myalert-light")
+		}
 	}
 
 	private unhighlightNote() {
-			const titlebar = document.getElementsByClassName("titlebar")[0]
-			titlebar.classList.remove("myalert")
+			const titlebar = document.getElementsByClassName(this.settings.uiElementToHighlight)[0]
+			if (this.settings.uiElementToHighlight == 'titlebar') {
+				titlebar.classList.remove("myalert")
+			} else {
+				titlebar.classList.remove("myalert-light")
+			}
 	}
 
 	private checkPath(currentPath: string, blacklistedPath: string): boolean {
@@ -94,6 +104,23 @@ class SettingTab extends PluginSettingTab {
 		let {containerEl} = this;
 		
 		containerEl.empty()
+
+		new Setting(containerEl)
+			.setName('Object to highlight')
+			.setDesc('Either select the titlebar, the header or the content.')
+			.addDropdown(dropdown =>   
+				{
+					return dropdown
+						.addOption("titlebar", "Titlebar")
+						.addOption("view-header", "Header")
+						.addOption("view-content", "Content")
+						.setValue(this.plugin.settings.uiElementToHighlight)
+						.onChange((value) => {
+							this.plugin.settings.uiElementToHighlight = value;
+							this.plugin.saveSettings();
+						});
+				})
+
 
 		new Setting(containerEl)
 			.setName('check frontmatter')
