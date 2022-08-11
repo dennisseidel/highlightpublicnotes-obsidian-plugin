@@ -1,8 +1,31 @@
 /* Sets all the text color to red! */
 .myalert {
-    background: red !important;
+    /* Sets the background to the colour chosen in Style Settings, using 'red' as a fallback */
+    background: var(--highlight-published-clr, red) !important;
 }
 
 .myalert-light {
-    background: rgba(255, 122, 89, .3) !important;
+    /* Uses the custom Style Settings colour with values for 'red' as a fallback */
+    --highlight-muted: rgba(var(--highlight-published-clr-rgb-r, 255), var(--highlight-published-clr-rgb-g, 122), var(--highlight-published-clr-rgb-b, 89), .3);
+    background-color: var(--highlight-muted) !important;
 }
+
+/* Setting for the Style Settings plugin */
+/* @settings
+
+name: Highlight Public Notes
+id: plugin-name
+settings:
+    - 
+        id: highlight-published-clr
+        title: Accent Color
+        description: Color used to highlight public notes.
+        type: variable-themed-color
+        format: hex
+        alt-format: 
+            -
+                id: highlight-published-clr-rgb 
+                format: rgb-split
+        default-light: '#FF0000'
+        default-dark: '#AA0000'
+*/
