@@ -6,11 +6,11 @@ This plugin for [Obsidian](https://obsidian.md/) highlights the titlebar of note
 
 ## Usage
 
-After enabling the plugin in the settings menu, configure if you want to highlight notes in a specific folder (e.g. `03_ARTICLES`) or highlight a frontmatter attribute and value (e.g. `classification: public`). You can update the `attribute` the plugin  checks as well as the `value`. Close the menu and add a note either to the highlighted folder or add the classified frontmatter attribute. **As the plugin only performs the highlight check when you load the file you need to reload the file to see the higlighted titlebar imidiately. You can reload the file by switching to another note and back**. You see on load of the page the plugin check the frontmatter e.g. `classification: public` or the path and highlights the titlebar red.
+After enabling the plugin in the settings menu, configure if you want to highlight notes in a specific folder (e.g. `03_ARTICLES`) or highlight a frontmatter attribute and value (e.g. `classification: public`). You can update the `attribute` the plugin checks as well as the `value`. Close the menu and add a note either to the highlighted folder or add the classified frontmatter attribute. **As the plugin only performs the highlight check when you load the file you need to reload the file to see the higlighted titlebar immediately. You can reload the file by switching to another note and back**. After reload, the plugin checks the frontmatter e.g. `classification: public` or the path and highlights the titlebar with a red color.
 
 ## Alternative: cssclasses
 
-Obsidian has a [cssclasses](https://forum.obsidian.md/t/apply-custom-css-to-certain-pages/15361) build-in. Combining a custome css snippet with the `cssclass:` attribute in the frontmatter provides a similar functionality.
+Obsidian supports [cssclasses](https://forum.obsidian.md/t/apply-custom-css-to-certain-pages/15361) too. Combining a custom CSS snippet with the `cssclass:` attribute in the frontmatter provides a similar functionality.
 
 ## Compatibility
 
