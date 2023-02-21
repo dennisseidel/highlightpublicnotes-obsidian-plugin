@@ -1,8 +1,10 @@
 /* Sets all the text color to red! */
 .myalert {
-    background: red !important;
+  background: red !important;
 }
-
 .myalert-light {
-    background: rgba(255, 122, 89, .3) !important;
+  background: rgba(255, 122, 89, 0.3) !important;
+}
+.workspace-tab-header-container-inner.myalert-light {
+  background: rgba(255, 122, 89, 0.3) !important;
 }
