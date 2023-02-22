@@ -4,5 +4,5 @@ set -o pipefail
 npm run build
 npm run release
 version=$(cat manifest.json | jq -r ".version")
-gh release create ${version} -F CHANGELOG.md manifest.json main.js styles.css
+gh release create ${version} -F CHANGELOG.md manifest.json dist/main.js styles.css
 git push
